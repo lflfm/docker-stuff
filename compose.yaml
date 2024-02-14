@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  # docker compose run --rm terraform terraform --version
+  terraform:
+    image: hashicorp/terraform:1.4.0
+    volumes:
+      - ./terraform:/infra
+    working_dir: /infra
+  # docker compose run --rm aws-cli aws-cli help
+  aws-cli:
+    image: amazon/aws-cli:2.2.20
+    volumes:
+      - ./aws:/aws
+  # docker compose run --rm python python --version
+  python:
+    image: python:3.8
+    volumes:
+      - ./python:/python
+    working_dir: /python
+  # docker compose run --rm scout-cli version
+  scout-cli:
+    image: docker/scout-cli
+    volumes:
+      - .:/scout
